@@ -285,27 +285,46 @@
         }
 
         async function enterLobby() {
-            player.name = document.getElementById('playerName').value.trim();
-            player.class = document.getElementById('playerClass').value.trim();
-            if (!player.name || !player.class) return showAlert("Isi Nama dan Kelas!");
-            
-            if (supabaseClient) {
-                try {
-                    // Cek apakah data sudah ada untuk memuat progres kunci pintu (opsional)
-                    // Untuk saat ini kita hanya update waktu login
-                    await supabaseClient.from('vault_summary').upsert({ 
-                        nama_siswa: player.name, 
-                        kelas: player.class, 
-                        login_at: new Date().toISOString() 
-                    }, { onConflict: 'nama_siswa, kelas' });
-                } catch (e) { console.error("Database Error:", e); }
+    player.name = document.getElementById('playerName').value.trim();
+    player.class = document.getElementById('playerClass').value.trim();
+    if (!player.name || !player.class) return showAlert("Isi Nama dan Kelas!");
+    
+    if (supabaseClient) {
+        try {
+            // 1. Ambil data siswa yang sudah ada di database
+            const { data, error } = await supabaseClient
+                .from('vault_summary')
+                .select('nilai_ruang_1, nilai_ruang_2, nilai_ruang_3')
+                .eq('nama_siswa', player.name)
+                .eq('kelas', player.class)
+                .single();
+
+            if (data) {
+                // 2. Jika ada nilai >= 75 di database, buka pintu berikutnya secara otomatis
+                if (data.nilai_ruang_1 >= 75) player.unlocked.push(2);
+                if (data.nilai_ruang_2 >= 75) player.unlocked.push(3);
+                
+                // Hapus duplikat agar tidak ada angka double di array unlocked
+                player.unlocked = [...new Set(player.unlocked)];
             }
 
-            document.getElementById('lobbyWelcome').innerText = `Halo ${player.name} (${player.class}), dekripsi ruangan di bawah:`;
-            document.getElementById('loginScreen').classList.remove('active');
-            document.getElementById('lobbyScreen').classList.add('active');
-            updateDoors();
+            // 3. Catat waktu login terbaru
+            await supabaseClient.from('vault_summary').upsert({ 
+                nama_siswa: player.name, 
+                kelas: player.class, 
+                login_at: new Date().toISOString() 
+            }, { onConflict: 'nama_siswa, kelas' });
+
+        } catch (e) { 
+            console.error("Database Sync Error:", e); 
         }
+    }
+
+    document.getElementById('lobbyWelcome').innerText = `Halo ${player.name} (${player.class}), dekripsi ruangan di bawah:`;
+    document.getElementById('loginScreen').classList.remove('active');
+    document.getElementById('lobbyScreen').classList.add('active');
+    updateDoors(); // Memperbarui tampilan pintu (terkunci/terbuka)
+}
 
         function updateDoors() {
             [2, 3].forEach(num => {
