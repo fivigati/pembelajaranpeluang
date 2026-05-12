@@ -51,40 +51,108 @@
 
     <!-- 1. LOGIN SCREEN -->
     <section id="loginScreen" class="screen active items-center justify-center flex-col px-4">
-        <div class="max-w-2xl w-full bg-slate-900/80 backdrop-blur-xl p-8 rounded-2xl neon-border text-center">
-            <h1 class="text-4xl md:text-5xl font-cyber neon-text mb-2">THE DIGITAL VAULT</h1>
-            <p class="text-cyan-400 mb-8 tracking-widest uppercase text-sm">Sistem Keamanan Protokol: Peluang</p>
+    <div class="max-w-2xl w-full bg-slate-900/80 backdrop-blur-xl p-8 rounded-2xl neon-border text-center">
+        <h1 class="text-4xl md:text-5xl font-cyber neon-text mb-2">THE DIGITAL VAULT</h1>
+        <p class="text-cyan-400 mb-8 tracking-widest uppercase text-sm">Sistem Keamanan Protokol: Peluang</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="text-left">
+                <label class="block mb-2 text-slate-400 font-bold tracking-widest text-xs">NAMA PENJELAJAH:</label>
+                <input type="text" id="playerName" list="studentList" class="w-full bg-black/50 border border-slate-700 p-3 rounded text-cyan-300 focus:outline-none focus:border-cyan-400 font-bold" placeholder="Ketik namamu...">
+                
+                <datalist id="studentList">
+                    <option value="ABID AQILA WIRATAMA">
+                    <option value="ACHMAD MIFTAHUL HUDA">
+                    <option value="AHMAD FARIS FADHILAH">
+                    <option value="AHMAD ZAIDAN ALFIKRI">
+                    <option value="ALISHA ZAHRA OCTAVIANA">
+                    <option value="AMRIZAL RAHMAT MAULIDANI">
+                    <option value="ANDIK FIRMANSYAH">
+                    <option value="ANGGELINA OKTAVIA">
+                    <option value="ANNISA NUR RACHMA AZZARAH">
+                    <option value="ASYIFA FEBRIANA PUTRI">
+                    <option value="AZ ZAHRAH DIVA SYAHPUTRI">
+                    <option value="AZMI RIDWAN ATHALLAH ARIYANTO">
+                    <option value="BAGAS DEWA BUANA">
+                    <option value="BILQIS MAHA FILWA">
+                    <option value="FARIS RIZQY OKTAFIANSYAH">
+                    <option value="FATIMA'TUS ZAHRO">
+                    <option value="FATUR ARRASYID">
+                    <option value="FINNA AMELIA FEDORA">
+                    <option value="GENDIS ELVAIRA DWITIRTO RAHMATIE">
+                    <option value="SAMOCHAMMAD FATHIR AQEELAH ROVIANSYAH">
+                    <option value="MUHAMMAD ZAKY BRAHMANTYO BAGASKARA">
+                    <option value="NAFISAH AQILAH ARROFIFAH">
+                    <option value="NAJWA AZZAHRA SALSABILLA">
+                    <option value="RAHMAD CAHAYA">
+                    <option value="RANIA AYU SEPTIANA">
+                    <option value="REZA ZAIN">
+                    <option value="SATRIA BINTANG SYAHADAH">
+                    <option value="SOFIA RIZKY ANARA">
+                    <option value="TANAYA GALUH NIRMALA SARI">
+                    <option value="WINDI NUR AZIZA WIBOWO">
+                    <option value="YONGKI MAULANA VALENCIA">
+                    <option value="ACH FAUZAN ABDILLAH">
+                    <option value="AL-KHADAFI AQILAH AR-ZAKIAN">
+                    <option value="ANINDYA RASYIDTA DEWA DANISWARA">
+                    <option value="ASTAGINA DEWI MAULIDYA">
+                    <option value="AURA KARISSA PUTRI">
+                    <option value="BINTANG MAULANA RAHMAD WIJAYA">
+                    <option value="DAFFA RIZKI SAPUTRA">
+                    <option value="DEWI BAYU PUTRI PITALOKA">
+                    <option value="DISMA PUTRI OKTAVIA">
+                    <option value="ELIRICA ALIYAH">
+                    <option value="FAUZIA AULIA PUTRI">
+                    <option value="GENRE ANEVAY RADISTA">
+                    <option value="HANI FADHILAH">
+                    <option value="LOVLY DIANAH KAMILAH">
+                    <option value="MUHAMMAD GILANG RAMADHAN">
+                    <option value="MUHAMMAD MISBAHUS SURUR">
+                    <option value="NADHIF AZKA KIRANSYAH">
+                    <option value="NADRASYAH PARSA KALENA">
+                    <option value="ERA PUTRI ARIA WATIN">
+                    <option value="OVAL DWI PUTRA HARIANTO">
+                    <option value="RAMA RAFAEL SAPUTRA">
+                    <option value="REIHAN RIZQI RAMADHAN">
+                    <option value="REVAN ARIA PUTRA">
+                    <option value="SAKTI PRASMUDA WARDANI AL-AMIN">
+                    <option value="SITI HUDAIFAH">
+                    <option value="TIRTA JAVIER PRAWIRA">
+                    <option value="ZAHRA FIRA HARIANTO">
+                    <option value="ZIVA NUR MAULIDYA">
+                    <option value="SILVA PUTRI ANDRIANA">
+                </datalist>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div class="text-left">
-                    <label class="block mb-2 text-slate-400 font-bold tracking-widest text-xs">NAMA PENJELAJAH:</label>
-                    <input type="text" id="playerName" class="w-full bg-black/50 border border-slate-700 p-3 rounded text-cyan-300 focus:outline-none focus:border-cyan-400 font-bold" placeholder="Nama Lengkap">
-                </div>
-                <div class="text-left">
-                    <label class="block mb-2 text-slate-400 font-bold tracking-widest text-xs">KELAS:</label>
-                    <input type="text" id="playerClass" class="w-full bg-black/50 border border-slate-700 p-3 rounded text-cyan-300 focus:outline-none focus:border-cyan-400 font-bold" placeholder="Contoh: VIII-A">
-                </div>
+            <div class="text-left">
+                <label class="block mb-2 text-slate-400 font-bold tracking-widest text-xs">KELAS:</label>
+                <select id="playerClass" class="w-full bg-black/50 border border-slate-700 p-3 rounded text-cyan-300 focus:outline-none focus:border-cyan-400 font-bold appearance-none">
+                    <option value="" disabled selected>Pilih Kelas</option>
+                    <option value="8A">8A</option>
+                    <option value="8B">8B</option>
+                </select>
             </div>
-
-            <p class="text-left mb-2 text-slate-400 font-bold tracking-widest uppercase text-xs">PILIH AVATAR:</p>
-            <div class="grid grid-cols-4 gap-4 mb-8">
-                <div class="avatar-card border-2 border-slate-700 rounded-xl p-2 selected" onclick="selectAvatar(0, this)">
-                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Felix&backgroundColor=b6e3f4" alt="R1" class="rounded-lg">
-                </div>
-                <div class="avatar-card border-2 border-slate-700 rounded-xl p-2" onclick="selectAvatar(1, this)">
-                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Aneka&backgroundColor=c0aede" alt="R2" class="rounded-lg">
-                </div>
-                <div class="avatar-card border-2 border-slate-700 rounded-xl p-2" onclick="selectAvatar(2, this)">
-                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Harley&backgroundColor=ffd5dc" alt="R3" class="rounded-lg">
-                </div>
-                <div class="avatar-card border-2 border-slate-700 rounded-xl p-2" onclick="selectAvatar(3, this)">
-                    <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Buster&backgroundColor=d1d4f9" alt="R4" class="rounded-lg">
-                </div>
-            </div>
-
-            <button onclick="enterLobby()" class="btn-action w-full py-4 text-xl font-cyber">MULAI DEKRIPSI</button>
         </div>
-    </section>
+
+        <p class="text-left mb-2 text-slate-400 font-bold tracking-widest uppercase text-xs">PILIH AVATAR:</p>
+        <div class="grid grid-cols-4 gap-4 mb-8">
+            <div class="avatar-card border-2 border-slate-700 rounded-xl p-2 selected" onclick="selectAvatar(0, this)">
+                <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Felix&backgroundColor=b6e3f4" alt="R1" class="rounded-lg">
+            </div>
+            <div class="avatar-card border-2 border-slate-700 rounded-xl p-2" onclick="selectAvatar(1, this)">
+                <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Aneka&backgroundColor=c0aede" alt="R2" class="rounded-lg">
+            </div>
+            <div class="avatar-card border-2 border-slate-700 rounded-xl p-2" onclick="selectAvatar(2, this)">
+                <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Harley&backgroundColor=ffd5dc" alt="R3" class="rounded-lg">
+            </div>
+            <div class="avatar-card border-2 border-slate-700 rounded-xl p-2" onclick="selectAvatar(3, this)">
+                <img src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=Buster&backgroundColor=d1d4f9" alt="R4" class="rounded-lg">
+            </div>
+        </div>
+
+        <button onclick="enterLobby()" class="btn-action w-full py-4 text-xl font-cyber">MULAI DEKRIPSI</button>
+    </div>
+</section>
 
     <!-- 2. LOBBY SCREEN -->
     <section id="lobbyScreen" class="screen items-center justify-center flex-col px-4">
