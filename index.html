@@ -395,15 +395,32 @@
 }
 
         function updateDoors() {
-            [2, 3].forEach(num => {
-                const d = document.getElementById(`door${num}`);
-                if (player.unlocked.includes(num)) {
-                    d.classList.remove('locked');
-                    d.querySelector('.mt-auto').innerText = "TERBUKA";
-                    d.querySelector('i').className = d.querySelector('i').className.replace('text-slate-700', 'text-cyan-400');
-                }
-            });
+    [2, 3].forEach(num => {
+        const d = document.getElementById(`door${num}`);
+        if (player.unlocked.includes(num)) {
+            // Menghapus kelas locked (filter grayscale)
+            d.classList.remove('locked');
+            // Mengubah kursor
+            d.style.cursor = 'pointer';
+            // Mengubah teks status di bagian bawah pintu
+            const statusText = d.querySelector('.mt-auto');
+            if (statusText) {
+                statusText.innerText = "TERBUKA";
+                statusText.classList.remove('text-slate-500');
+                statusText.classList.add('text-cyan-500');
+            }
+            // Mengubah warna ikon menjadi biru neon
+            const icon = d.querySelector('i');
+            if (icon) {
+                icon.classList.remove('text-slate-700');
+                icon.classList.add('text-cyan-400');
+            }
+            // Menghapus border kusam dan ganti ke neon jika perlu
+            d.classList.remove('border-slate-700');
+            d.classList.add('neon-border');
         }
+    });
+}
 
         function startRoom(num) {
             if (!player.unlocked.includes(num)) return;
